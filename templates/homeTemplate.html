@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body style="background-color:black; color:green;">
+<h1>AutoGro v0.0.1</h1>
+<h2>Temperature set to: {{ setTemperature }} F Humidity set to:{{ setHumidity }}RH</h2>
+<table style="color:green;border: 3px solid green;border-collapse: collapse;border-style: dashed;">
+  <tr>
+    <th>Temperature</th>
+    <th>Humidity</th>
+    <th>Heater Status</th>
+    <th>Humidifier Status</th>
+  </tr>
+  <tr>
+    <td>{{ temperature }}</td>
+    <td>{{ humidity }}</td>
+    <td>{{ heaterStatus }}</td>
+    <td>{{ humidifierStatus}}</td>
+  </tr>
+</table>
+<form action=""; method="post"; class="thermostat" style="background-color:black; color:green">
+	<div class="thermostat">
+		<label for="newTemperature">Set new temperature:</label>
+		<input type="number" name="newTemperature" id="newTemperature" style="background-color:black; color:green">
+	</div>
+	<div class="thermostat">
+		<label for="newHumidity">Set new humidity:</label>
+		<input type="number" name="newHumidity" id="newHumidity" style="background-color:black; color:green;">
+	</div>
+	<div class="thermostat">
+		<input type="submit" value="Set New Values" style="background-color:black; color:green;">
+	</div>
+</body>
+</html>
