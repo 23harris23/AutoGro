@@ -7,8 +7,14 @@ DHTpin = 22
 heaterStatus = False
 humidifierStatus = False
 
+def getData():
+	humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.DHT11, DHTpin)
+
 def thermostat(setTemperature, setHumidity):
 	humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.DHT11, DHTpin)
+	while temperature is None and humidity is None:
+		humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.DHT11, DHTpin)
+
 	temperature = (temperature * 1.8) + 32
 	if temperature >= setTemperature:
 		rfSend(1)
