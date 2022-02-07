@@ -4,6 +4,7 @@ from thermostat import thermostat
 from rfRemote import rfSend
 import sys
 from multiprocessing import Process
+from flowTest2 import dispense_water
 
 app = Flask(__name__)
 
@@ -53,6 +54,16 @@ def main_page():
 		return redirect(request.url)
 	elif request.method == 'GET': 
 		return render_template("homeTemplate.html", temperature=temperature, humidity=humidity, heaterStatus=heaterStatus, humidifierStatus=humidifierStatus, setHumidity=setHumidity, setTemperature=setTemperature)
+
+@app.route('/water', methods=['GET', 'POST'])
+def watering_page():
+	if request.method == 'POST':
+		quantity = request.form['volume']
+		#dispense_water(int(quantity))
+		print(str(quantity) + ' Liters dispensed')
+		return redirect(request.url)
+	elif request.method == 'GET':
+		return render_template('waterControl.html')
 
 def startSite():
 	app.run(host='0.0.0.0', port=2000, debug=True)
